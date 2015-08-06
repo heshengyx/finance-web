@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<!-- 对不同的路径，启用不同的装饰器 -->
+	<mapping path="/index" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/lend" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/lend/detail/*" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/borrow" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	
+	<mapping path="/home" decorator="/WEB-INF/layout/homeLayout.jsp"/>
+	<mapping path="/home/capital/trade" decorator="/WEB-INF/layout/homeLayout.jsp"/>
+	<mapping path="/home/capital/deposit" decorator="/WEB-INF/layout/homeLayout.jsp"/>
+	<mapping path="/home/capital/withdraw" decorator="/WEB-INF/layout/homeLayout.jsp"/>
+	<mapping path="/home/account/resume" decorator="/WEB-INF/layout/homeLayout.jsp"/>
+	<mapping path="/home/account/security" decorator="/WEB-INF/layout/homeLayout.jsp"/>
+	<mapping path="/home/account/bankcard" decorator="/WEB-INF/layout/homeLayout.jsp"/>
+	
+	<mapping path="/login" decorator="/WEB-INF/layout/layout.jsp"/>
+	<mapping path="/register" decorator="/WEB-INF/layout/layout.jsp"/>
+	
+	<!-- 排除，不进行装饰的路径 -->
+	<mapping path="/images/*" exclude="true"/>
+	<mapping path="/css/*" exclude="true"/>
+	<mapping path="/js/*" exclude="true"/>
+	<mapping path="/fonts/*" exclude="true"/>
+	<mapping path="/locales/*" exclude="true"/>
+	
+	<!-- 自定义 tag 规则 -->
+	<content-processor>
+		<tag-rule-bundle class="com.myself.finance.tag.NavTitleTagRuleBundle" />
+		<tag-rule-bundle class="com.myself.finance.tag.JscriptTagRuleBundle" />
+	</content-processor>
+</sitemesh>
