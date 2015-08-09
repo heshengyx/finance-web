@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.myself.common.message.JsonResult;
 import com.myself.finance.entity.UserAuth;
 import com.myself.finance.param.UserAuthQueryParam;
-import com.myself.finance.service.UserAuthService;
+import com.myself.finance.service.IUserAuthService;
 
 @Controller
 @RequestMapping("/auth")
 public class AuthController extends BaseController {
 
 	@Autowired
-	private UserAuthService userAuthService;
+	private IUserAuthService userAuthService;
 	
 	@RequestMapping("/record/{userId}")
 	@ResponseBody

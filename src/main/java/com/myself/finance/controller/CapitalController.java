@@ -21,8 +21,8 @@ import com.myself.finance.entity.User;
 import com.myself.finance.page.Page;
 import com.myself.finance.param.AccountParam;
 import com.myself.finance.param.AccountTradeQueryParam;
-import com.myself.finance.service.AccountService;
-import com.myself.finance.service.AccountTradeService;
+import com.myself.finance.service.IAccountService;
+import com.myself.finance.service.IAccountTradeService;
 
 @Controller
 @RequestMapping("/home/capital")
@@ -32,10 +32,10 @@ public class CapitalController extends BaseController {
 			.getLogger(CapitalController.class);
 	
 	@Autowired
-	private AccountService accountService;
+	private IAccountService accountService;
 	
 	@Autowired
-	private AccountTradeService accountTradeService;
+	private IAccountTradeService accountTradeService;
 	
 	@RequestMapping("/trade")
 	public String trade() {

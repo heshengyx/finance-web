@@ -24,20 +24,20 @@ import org.springframework.util.CollectionUtils;
 import com.myself.finance.entity.Permission;
 import com.myself.finance.entity.Role;
 import com.myself.finance.entity.User;
-import com.myself.finance.service.PermissionService;
-import com.myself.finance.service.RoleService;
-import com.myself.finance.service.UserService;
+import com.myself.finance.service.IPermissionService;
+import com.myself.finance.service.IRoleService;
+import com.myself.finance.service.IUserService;
 
 public class SecurityRealm extends AuthorizingRealm {
 
 	@Autowired
-	private UserService userService;
+	private IUserService userService;
 	
 	@Autowired
-	private RoleService roleService;
+	private IRoleService roleService;
 	
 	@Autowired
-	private PermissionService permissionService;
+	private IPermissionService permissionService;
 
 	/**
 	 * 为当前登录的Subject授予角色和权限

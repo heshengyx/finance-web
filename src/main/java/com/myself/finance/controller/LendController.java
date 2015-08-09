@@ -14,14 +14,14 @@ import com.myself.common.message.JsonResult;
 import com.myself.finance.entity.Product;
 import com.myself.finance.page.IPage;
 import com.myself.finance.param.ProductQueryParam;
-import com.myself.finance.service.ProductService;
+import com.myself.finance.service.IProductService;
 
 @Controller
 @RequestMapping("/lend")
 public class LendController extends BaseController {
 	
 	@Autowired
-	private ProductService productService;
+	private IProductService productService;
 	
 	@RequestMapping("")
 	public String page() {

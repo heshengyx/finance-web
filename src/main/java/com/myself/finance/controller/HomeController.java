@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.myself.finance.entity.Account;
 import com.myself.finance.entity.User;
-import com.myself.finance.service.AccountService;
+import com.myself.finance.service.IAccountService;
 
 @Controller
 @RequestMapping("/home")
 public class HomeController extends BaseController {
 
 	@Autowired
-	private AccountService accountService;
+	private IAccountService accountService;
 	
 	@RequestMapping("")
 	public String page(Model model) {

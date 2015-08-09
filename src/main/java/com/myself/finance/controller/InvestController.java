@@ -12,14 +12,14 @@ import com.myself.common.message.JsonResult;
 import com.myself.finance.data.UserProductData;
 import com.myself.finance.page.Page;
 import com.myself.finance.param.UserProductQueryParam;
-import com.myself.finance.service.UserProductService;
+import com.myself.finance.service.IUserProductService;
 
 @Controller
 @RequestMapping("/invest")
 public class InvestController extends BaseController {
 
 	@Autowired
-	private UserProductService userProductService;
+	private IUserProductService userProductService;
 	
 	@RequestMapping("/record/{productId}")
 	@ResponseBody

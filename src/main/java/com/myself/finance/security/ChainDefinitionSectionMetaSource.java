@@ -12,14 +12,14 @@ import org.springframework.util.CollectionUtils;
 
 import com.myself.finance.entity.Permission;
 import com.myself.finance.param.PermissionQueryParam;
-import com.myself.finance.service.PermissionService;
+import com.myself.finance.service.IPermissionService;
 
 
 public class ChainDefinitionSectionMetaSource implements
 		FactoryBean<Ini.Section> {
 
 	@Autowired  
-    private PermissionService permissionService;
+    private IPermissionService permissionService;
 	
 	private String filterChainDefinitions;
 

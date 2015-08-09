@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myself.common.message.JsonMessage;
 import com.myself.finance.param.UserParam;
-import com.myself.finance.service.UserService;
+import com.myself.finance.service.IUserService;
 
 @Controller
 @RequestMapping("/register")
@@ -23,7 +23,7 @@ public class RegisterController extends BaseController {
 			.getLogger(RegisterController.class);
 	
 	@Autowired
-	private UserService userService;
+	private IUserService userService;
 	
 	@RequestMapping("")
 	public String page() {
