@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myself.common.message.JsonResult;
 import com.myself.finance.entity.Product;
-import com.myself.finance.page.Page;
+import com.myself.finance.page.IPage;
 import com.myself.finance.param.ProductQueryParam;
 import com.myself.finance.service.ProductService;
 
@@ -31,17 +31,17 @@ public class LendController extends BaseController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public Object list(ProductQueryParam param) {
-		Page<ProductQueryParam> pageResult = new Page<ProductQueryParam>();
+		/*Page<ProductQueryParam> pageResult = new Page<ProductQueryParam>();
 		pageResult.setPage(param.getPage());
 		pageResult.setRows(param.getLength());
-		pageResult.setEntity(param);
-		List<Product> datas = productService.list(pageResult);
+		pageResult.setEntity(param);*/
+		IPage<Product> datas = productService.query(param);
 		
 		JsonResult<Product> jResult = new JsonResult<Product>();
 		jResult.setDraw(param.getDraw());
-		jResult.setRecordsTotal(pageResult.getTotalRecord());
-		jResult.setRecordsFiltered(pageResult.getTotalRecord());
-		jResult.setData(datas);
+		jResult.setRecordsTotal(datas.getTotalRecord());
+		jResult.setRecordsFiltered(datas.getTotalRecord());
+		jResult.setData((List<Product>)datas.getData());
 		return jResult;
 	}
 	

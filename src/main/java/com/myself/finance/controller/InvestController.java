@@ -29,7 +29,7 @@ public class InvestController extends BaseController {
 		pageResult.setPage(param.getPage());
 		pageResult.setRows(param.getLength());
 		pageResult.setEntity(param);
-		List<UserProductData> datas = userProductService.list(pageResult);
+		List<UserProductData> datas = null;
 		
 		JsonResult<UserProductData> jResult = new JsonResult<UserProductData>();
 		jResult.setDraw(param.getDraw());
