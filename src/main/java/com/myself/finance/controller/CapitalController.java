@@ -18,7 +18,7 @@ import com.myself.common.message.JsonResult;
 import com.myself.finance.entity.Account;
 import com.myself.finance.entity.AccountTrade;
 import com.myself.finance.entity.User;
-import com.myself.finance.page.Page;
+import com.myself.finance.page.IPage;
 import com.myself.finance.param.AccountParam;
 import com.myself.finance.param.AccountTradeQueryParam;
 import com.myself.finance.service.IAccountService;
@@ -47,17 +47,13 @@ public class CapitalController extends BaseController {
 	public Object list(AccountTradeQueryParam param) {
 		User user = getCurrentUser();
 		param.setUserId(user.getId());
-		Page<AccountTradeQueryParam> pageResult = new Page<AccountTradeQueryParam>();
-		pageResult.setPage(param.getPage());
-		pageResult.setRows(param.getLength());
-		pageResult.setEntity(param);
-		List<AccountTrade> datas = accountTradeService.list(pageResult);
+		IPage<AccountTrade> datas = accountTradeService.query(param);
 		
 		JsonResult<AccountTrade> jResult = new JsonResult<AccountTrade>();
 		jResult.setDraw(param.getDraw());
-		jResult.setRecordsTotal(pageResult.getTotalRecord());
-		jResult.setRecordsFiltered(pageResult.getTotalRecord());
-		jResult.setData(datas);
+		jResult.setRecordsTotal(datas.getTotalRecord());
+		jResult.setRecordsFiltered(datas.getTotalRecord());
+		jResult.setData((List<AccountTrade>)datas.getData());
 		return jResult;
 	}
 	

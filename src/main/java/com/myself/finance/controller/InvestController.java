@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myself.common.message.JsonResult;
 import com.myself.finance.data.UserProductData;
-import com.myself.finance.page.Page;
+import com.myself.finance.page.IPage;
 import com.myself.finance.param.UserProductQueryParam;
 import com.myself.finance.service.IUserProductService;
 
@@ -25,17 +25,13 @@ public class InvestController extends BaseController {
 	@ResponseBody
 	public Object record(@PathVariable String productId, UserProductQueryParam param) {
 		param.setProductId(productId);
-		Page<UserProductQueryParam> pageResult = new Page<UserProductQueryParam>();
-		pageResult.setPage(param.getPage());
-		pageResult.setRows(param.getLength());
-		pageResult.setEntity(param);
-		List<UserProductData> datas = null;
+		IPage<UserProductData> datas = userProductService.query(param);
 		
 		JsonResult<UserProductData> jResult = new JsonResult<UserProductData>();
 		jResult.setDraw(param.getDraw());
-		jResult.setRecordsTotal(pageResult.getTotalRecord());
-		jResult.setRecordsFiltered(pageResult.getTotalRecord());
-		jResult.setData(datas);
+		jResult.setRecordsTotal(datas.getTotalRecord());
+		jResult.setRecordsFiltered(datas.getTotalRecord());
+		jResult.setData((List<UserProductData>)datas.getData());
 		return jResult;
 	}
 }

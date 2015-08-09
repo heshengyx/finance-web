@@ -31,10 +31,6 @@ public class LendController extends BaseController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public Object list(ProductQueryParam param) {
-		/*Page<ProductQueryParam> pageResult = new Page<ProductQueryParam>();
-		pageResult.setPage(param.getPage());
-		pageResult.setRows(param.getLength());
-		pageResult.setEntity(param);*/
 		IPage<Product> datas = productService.query(param);
 		
 		JsonResult<Product> jResult = new JsonResult<Product>();
