@@ -35,10 +35,9 @@ public class RegisterController extends BaseController {
 	public Object register(UserParam param, HttpServletRequest request) {
 		JsonMessage jMessage = new JsonMessage();
 		HttpSession session = request.getSession();
-		String kaptchaValue = (String) session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-		param.setKaptchaValue(kaptchaValue);
+		String captcha = (String) session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
 		try {
-			userService.register(param);
+			userService.register(param, captcha);
 			logger.info("用户注册成功");
 		} catch (Exception e) {
 			logger.error("用户注册失败", e);
